@@ -1,4 +1,6 @@
-   <ThingDef ParentName="BuildingBase">
+<Defs>
+
+<ThingDef ParentName="BuildingBase">
         <defName>PS_BatteryFarm</defName>
         <minifiedDef>MinifiedThing</minifiedDef>
         <label>Battery Farm</label>
@@ -216,3 +218,5 @@
             <li Class="PawnStorages.PSExtension" />
         </modExtensions>
     </ThingDef>
+
+</Defs>
