@@ -135,6 +135,7 @@
         <inspectorTabs>
             <li>PawnStorages.Farm.ITab_Farm</li>
             <li>PawnStorages.Farm.ITab_Breeding</li>
+            <li>PawnStorages.Farm.ITab_Breeding_AnimalsList</li>
             <li>PawnStorages.Farm.ITab_Slaughter</li>
         </inspectorTabs>
         <designationCategory>Production</designationCategory>
