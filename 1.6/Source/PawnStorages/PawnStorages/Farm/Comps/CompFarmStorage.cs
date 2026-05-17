@@ -46,15 +46,6 @@ namespace PawnStorages.Farm.Comps
             {
                 yield return new Command_Action
                 {
-                    defaultLabel = "PS_ReleaseAnimals".Translate(),
-                    action = delegate
-                    {
-                        ReleaseContents(parent.Map);
-                    },
-                    icon = ContentFinder<Texture2D>.Get("UI/Buttons/PS_Release"),
-                };
-                yield return new Command_Action
-                {
                     defaultLabel = "PS_EjectAnimals".Translate(),
                     action = delegate
                     {
