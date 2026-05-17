@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Verse;
 
 namespace PawnStorages;
@@ -28,25 +28,11 @@ public class Settings : ModSettings
         Listing_Standard options = new();
         options.Begin(wrect);
 
-        options.CheckboxLabeled("PS_Settings_AllowNeedsDrop".Translate(), ref AllowNeedsDrop);
-        options.Gap(GapHeight);
-        options.Label("PS_Settings_Sleep_Rate_Multiplier".Translate(SleepRateMultiplier.ToString("0.00")));
-        SleepRateMultiplier = options.Slider(SleepRateMultiplier, 0f, 2f);
         options.CheckboxLabeled("PS_Settings_DebugLogging".Translate(), ref DebugLogging);
+        options.CheckboxLabeled("PS_Settings_RusticFarms".Translate(), ref RusticFarms);
+        options.CheckboxLabeled("PS_Settings_SuggestiveSilo".Translate(), ref SuggestiveSilo);
         if (ModsConfig.anomalyActive)
             options.CheckboxLabeled("PS_Settings_SpecialReleaseAll".Translate(), ref SpecialReleaseAll);
-        options.Gap(GapHeight);
-        options.Label("PS_Settings_Advanced".Translate());
-        ForcedPawn = options.TextEntryLabeled("PS_Settings_ForceNextPawnStatue".Translate(), ForcedPawn);
-        options.Gap(GapHeight);
-        bool showStoredPawnsInBarBefore = ShowStoredPawnsInBar;
-        options.CheckboxLabeled("PS_Settings_ShowStoredPawnsInBar".Translate(), ref ShowStoredPawnsInBar);
-        options.CheckboxLabeled("PS_Settings_RusticFarms".Translate(), ref RusticFarms);
-        if (showStoredPawnsInBarBefore != ShowStoredPawnsInBar)
-        {
-            Find.ColonistBar.MarkColonistsDirty();
-        }
-        options.CheckboxLabeled("PS_Settings_SuggestiveSilo".Translate(), ref SuggestiveSilo);
         options.Gap(GapHeight);
         options.Label("PS_Settings_Production_Scale".Translate(ProductionScale.ToString("0.00")));
         ProductionScale = options.Slider(ProductionScale, 0f, 10f);
@@ -70,7 +56,6 @@ public class Settings : ModSettings
         options.IntAdjuster(ref ProductionsPerDay, 1, 1);
         options.Gap(GapHeight);
 
-        options.Gap(GapHeight);
         if (options.ButtonText("PS_Reset".Translate()))
         {
             AllowNeedsDrop = true;
