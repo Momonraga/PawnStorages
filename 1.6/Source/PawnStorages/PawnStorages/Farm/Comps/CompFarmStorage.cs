@@ -108,5 +108,12 @@ namespace PawnStorages.Farm.Comps
 
             return sb.ToString().TrimStart().TrimEnd();
         }
+		
+		public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
+		{
+			// Forces the entire building to return nothing when right-clicked,
+					// ignoring all default building behaviors.
+			yield break;
+		}
     }
 }
