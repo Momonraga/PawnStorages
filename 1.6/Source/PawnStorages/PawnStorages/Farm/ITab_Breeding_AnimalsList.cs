@@ -10,7 +10,7 @@ using Verse;
 namespace PawnStorages.Farm
 {
 	// Token: 0x020000B9 RID: 185
-	public class ITab_Breeding_Animals : ITab
+	public class ITab_Breeding_AnimalsList : ITab
 	{
 		// Token: 0x170000DF RID: 223
 		// (get) Token: 0x0600044A RID: 1098 RVA: 0x0000496F File Offset: 0x00002B6F
@@ -23,9 +23,9 @@ namespace PawnStorages.Farm
 		}
 
 		// Token: 0x0600044B RID: 1099 RVA: 0x0000497C File Offset: 0x00002B7C
-		public ITab_Breeding_Animals()
+		public ITab_Breeding_AnimalsList()
 		{
-			this.size = ITab_Breeding_Animals.WinSize;
+			this.size = ITab_Breeding_AnimalsList.WinSize;
 			this.labelKey = "PS_BreedingAnimalsTab";
 		}
 
@@ -81,8 +81,8 @@ namespace PawnStorages.Farm
 			{
 				return;
 			}
-			Widgets.Label(new Rect(5f, 0f, ITab_Breeding_Animals.WinSize.x, 30f), "PS_BreedingAnimalsTab_TopLabel".Translate());
-			Rect rect = new Rect(0f, 30f, ITab_Breeding_Animals.WinSize.x, ITab_Breeding_Animals.WinSize.y - 30f).ContractedBy(10f);
+			Widgets.Label(new Rect(5f, 0f, ITab_Breeding_AnimalsList.WinSize.x, 30f), "PS_BreedingAnimalsTab_TopLabel".Translate());
+			Rect rect = new Rect(0f, 30f, ITab_Breeding_AnimalsList.WinSize.x, ITab_Breeding_AnimalsList.WinSize.y - 30f).ContractedBy(10f);
 			Rect outRect = new Rect(rect);
 			float height = (float)this.compFarmStorage.GetDirectlyHeldThings().Count * 60f;
 			Rect viewRect = new Rect(0f, 0f, outRect.width, height);
