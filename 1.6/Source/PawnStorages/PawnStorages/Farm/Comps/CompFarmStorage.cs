@@ -32,14 +32,6 @@ namespace PawnStorages.Farm.Comps
             return new Dialog_AutoSlaughter.AnimalCountRecord(total, male, maleYoung, female, femaleYoung, 0, 0);
         }
 
-        public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
-        {
-            foreach (FloatMenuOption floatMenuOption in base.CompFloatMenuOptions(selPawn))
-            {
-                yield return floatMenuOption;
-            }
-        }
-
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
             if (innerContainer.Count > 0)

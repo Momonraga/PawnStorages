@@ -2,12 +2,12 @@
 
 <Defs>
 
-    <JobDef>
-        <defName>PS_Enter</defName>
-        <driverClass>PawnStorages.JobDriver_Enter</driverClass>
-        <reportString>Entering TargetA</reportString>
-        <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
-    </JobDef>
+		<JobDef>
+			<defName>PS_Enter</defName>
+			<driverClass>PawnStorages.JobDriver_Enter</driverClass>
+			<reportString>Entering TargetA</reportString>
+			<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+		</JobDef>
     
     <JobDef>
         <defName>PS_CaptureAnimalToFarm</defName>
