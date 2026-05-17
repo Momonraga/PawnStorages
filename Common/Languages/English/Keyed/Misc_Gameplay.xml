@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
+    <PS_BreedingAnimalsTab>Animals</PS_BreedingAnimalsTab>
+	<PS_BreedingAnimalsTab_TopLabel>Stored Animals</PS_BreedingAnimalsTab_TopLabel>
 	<PS_ReleaseAll>Release all</PS_ReleaseAll>
 	<PS_All>Release all</PS_All>
 	<PS_ReleaseAllSelected>Release all selected</PS_ReleaseAllSelected>
