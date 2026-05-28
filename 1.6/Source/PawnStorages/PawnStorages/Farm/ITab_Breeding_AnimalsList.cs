@@ -6,6 +6,7 @@ using UnityEngine;
 using Verse;
 
 //Mirror of Production Tab shows male and female animals allows ejecting each animal
+//Added Itab_Production logic for gathering/shearing
 
 namespace PawnStorages.Farm
 {
@@ -13,7 +14,7 @@ namespace PawnStorages.Farm
     {
         public CompFarmStorage compFarmStorage => SelThing.TryGetComp<CompFarmStorage>();
 
-        public ITab_Breeding_Animals()
+        public ITab_Breeding_AnimalsList()
         {
             size = WinSize;
             labelKey = "PS_BreedingAnimalsTab";
@@ -50,7 +51,7 @@ namespace PawnStorages.Farm
             return Widgets.ButtonImage(new Rect(new Vector2(width - 50f, position + 15f), new Vector2(30f, 30f)), TexButton.Drop, Color.white, GenUI.MouseoverColor);
         }
 
-        protected override void FillTab()
+        public override void FillTab()
         {
             if (compFarmStorage == null)
                 return;
