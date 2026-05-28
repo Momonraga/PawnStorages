@@ -9,7 +9,7 @@ using Verse.Sound;
 
 namespace PawnStorages.Farm.Comps
 {
-    public partial class CompFarmBreeder : ThingComp
+    public partial class CompFarmBreeder : CompPawnStorageProducer
     {
         public int AutoSlaughterTarget = 0;
         public IBreederParent ParentAsBreederParent => parent as IBreederParent;
@@ -121,17 +121,11 @@ namespace PawnStorages.Farm.Comps
                     continue;
                 }
 
-                Dictionary<PawnKindDef, AutoSlaughterCullOrder> cullOrders = GetOrPopulateAutoSlaughterCullOrder();
-                if (!cullOrders.ContainsKey(type.Key))
-                {
-                    cullOrders.Add(type.Key, new AutoSlaughterCullOrder());
-                }
-
                 var groupedByAgeAndGender = type.GroupBy(p => new { p.ageTracker.Adult, p.gender })
                     .Select(group => new
                     {
                         FarmAnimalCharacteristics = new FarmAnimalCharacteristics(group.Key.Adult, group.Key.gender),
-                        Pawns = cullOrders[type.Key].IsAscending(group.Key.Adult, group.Key.gender)
+                        Pawns = GetOrPopulateAutoSlaughterCullOrder()[type.Key].IsAscending(group.Key.Adult, group.Key.gender)
                             ? group.OrderBy(p => p.ageTracker.ageBiologicalTicksInt)
                             : group.OrderByDescending(p => p.ageTracker.ageBiologicalTicksInt),
                     })
@@ -202,6 +196,25 @@ namespace PawnStorages.Farm.Comps
 
             TryCull(pawnsByKind);
             TryBreed(pawnsByKind);
+            foreach (Pawn pawn in ParentAsBreederParent.AllHealthyPawns)
+            {
+                foreach (CompHasGatherableBodyResource compGatherable in pawn.GetComps<CompHasGatherableBodyResource>())
+                {
+                    if (pawn.gender == Gender.Female || compGatherable is not CompMilkable milkable || !milkable.Props.milkFemaleOnly)
+                    {
+                        parent.GetComp<CompFarmGatherable>().GatherableTick(compGatherable, ParentAsBreederParent.BuildingTickInterval);
+                    }
+                }
+            }
+            if (
+                !ProduceNow
+                && (!parent.IsHashIntervalTick(60000 / Math.Max(PawnStoragesMod.settings.ProductionsPerDay, 1)) || DaysProduce.Count <= 0 || !ParentAsBreederParent.IsActive)
+            )
+                return;
+            List<Thing> failedToPlace = [];
+            failedToPlace.AddRange(DaysProduce.Where(thing => !GenPlace.TryPlaceThing(thing, parent.Position, parent.Map, ThingPlaceMode.Near)));
+            DaysProduce.Clear();
+            DaysProduce.AddRange(failedToPlace);
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
