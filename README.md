@@ -1,3 +1,11 @@
+
+Changes made from Ranch
+Remove invasive 50/50 fertized egg logic in Farm with or without the presence of a male bird in the map/building.
+Decoupled shearing/gathering as a separate class compgatherable
+Added shearing/gathering to breeding farms to make it even more OP
+Gathering is now a separate comp class you call for both farm and breeding phallic silo
+
+
 <p>
   <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3119559485">
   <img alt="Steam Workshop Link" src="https://img.shields.io/static/v1?label=Steam&message=Workshop&color=blue&logo=steam&link=https://steamcommunity.com/sharedfiles/filedetails/?id=3119559485"/>
