@@ -9,7 +9,7 @@ using Verse;
 
 namespace PawnStorages.Farm
 {
-    public class ITab_Breeding_Animals : ITab
+    public class ITab_Breeding_AnimalsList : ITab
     {
         public CompFarmStorage compFarmStorage => SelThing.TryGetComp<CompFarmStorage>();
 
