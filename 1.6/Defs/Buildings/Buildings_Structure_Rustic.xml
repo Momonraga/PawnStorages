@@ -60,6 +60,7 @@
                 <addTransferGizmo>True</addTransferGizmo>
             </li>
             <li Class="PawnStorages.CompProperties_Renamable" />
+        	<li Class="PawnStorages.Farm.Comps.CompProperties_FarmGatherable" />
         </comps>
         <building>
             <wantsHopperAdjacent>true</wantsHopperAdjacent>
@@ -171,6 +172,7 @@
                 <addTransferGizmo>True</addTransferGizmo>
             </li>
             <li Class="PawnStorages.CompProperties_Renamable" />
+            <li Class="PawnStorages.Farm.Comps.CompProperties_FarmGatherable" />
         </comps>
         <building>
             <wantsHopperAdjacent>true</wantsHopperAdjacent>
