@@ -9,7 +9,7 @@ public class CompPawnStorageProducer : ThingComp, IActive
 {
     public IProductionParent ParentAsProductionParent => parent as IProductionParent;
 
-    protected List<Thing> DaysProduce = [];
+    public List<Thing> DaysProduce = [];
     public bool ProduceNow = false;
 
     public override void PostExposeData()
