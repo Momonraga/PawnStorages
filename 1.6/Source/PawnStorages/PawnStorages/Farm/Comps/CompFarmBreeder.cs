@@ -218,21 +218,37 @@ namespace PawnStorages.Farm.Comps
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
-        {
-            if (!DebugSettings.ShowDevGizmos)
-                yield break;
-            yield return new Command_Action
-            {
-                defaultLabel = "Make breeding progress 100%",
-                action = delegate
-                {
-                    foreach (PawnKindDef thing in BreedingProgress.Keys.ToList())
-                    {
-                        BreedingProgress[thing] = 1f;
-                    }
-                },
-                icon = ContentFinder<Texture2D>.Get("UI/Buttons/ReleaseAll"),
-            };
-        }
+		{
+			foreach (Gizmo gizmo in base.CompGetGizmosExtra())
+				yield return gizmo;
+			if (!DebugSettings.ShowDevGizmos)
+				yield break;
+			yield return new Command_Action
+			{
+				defaultLabel = "Make all animals ready to produce",
+				action = delegate
+				{
+					foreach (Pawn pawn in ParentAsBreederParent.AllHealthyPawns)
+					{
+						pawn.needs.food.CurLevel = pawn.needs.food.MaxLevel;
+						if (pawn.TryGetComp(out CompHasGatherableBodyResource compGatherable))
+							compGatherable.fullness = 1f;
+					}
+				},
+				icon = ContentFinder<Texture2D>.Get("UI/Buttons/ReleaseAll"),
+			};
+			yield return new Command_Action
+			{
+				defaultLabel = "Make breeding progress 100%",
+				action = delegate
+				{
+					foreach (PawnKindDef thing in BreedingProgress.Keys.ToList())
+					{
+						BreedingProgress[thing] = 1f;
+					}
+				},
+				icon = ContentFinder<Texture2D>.Get("UI/Buttons/ReleaseAll"),
+			};
+		}
     }
 }
